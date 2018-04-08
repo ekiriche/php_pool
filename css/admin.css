@@ -18,3 +18,37 @@ h2 {
     font-family:sans-serif;
     padding: 10px;
 }
+.top {
+    height: 100px;
+    width: 100%;
+    position: static;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxITEhUSEhIVFRUXFxcVFRcXFxoVGBcVGhcXFxcXFxcYHSggGBolHRcXITEhJSkrLi4uFx8zODMtNygtLisBCgoKDQ0NFQ8NDysZFRkrKysrLSsrKysrKy0tLS0rLS0rKys3Ny0rKystLS0rLSstLTcrLTcrLS0tKy0tLSstN//AABEIAHIBuQMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAABAAID/8QAJxABAQEAAQIFBAIDAAAAAAAAAAERAjHwQVGxwdEhgZHhYaEDEhP/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDjIlIWW1VgjbICqmgQRq1kKNwxmGAs+oihqKpA2yAVNAgh0DVG4YxGgXKBGxFU4hqDABitAghFWqNQ4xxagLlAarEVYLGuNWABDoEBgGqNRphoDyjNNWIqwWHgbAZJZEFMFVqqdaYMEarOHlViKDYuJoMrvpStgEQ6IDbPJaKAMixoGMFjaEZ1ajFDg06PFFaHIacBk4JG4DPKM8u+++rdSozKoVAMFOjEVqKi1YDJxQwBYK3RKqMQ6aIDXEUyiorXFXoNUBmlQwBeIbolBiG01RUUhqneCoHi1jBFZ0qwwB/qGwIxDp5JRQ2A2oKNViIVVLks77gJYYhFElRUVgEBlRUGJqM0AsMSCiiitFRQAUyo1UEiw4uQMopAQ6orRUjBgKiJpUCwxWgyqiiiQ6DaCqUVBURU4qKrDhoMVVU1AFVaKtUUVgKjCpBEsMkKjINUQBSFS76o4CkCUESn6SgEVVWADrOnVGhROS0DCFECKRBTVQsEGNawdUaFEq0DCFECKkKakJBBYdZWqN0UarQJCQItSoGJCAKeIEqjRrOnQREW9+iBGkUDFKIgWLiKJVG9TOnQREqt79UEiAUOCH6AFakBZasEBRUHAYq4tKRRCFAYkrUFFYcZgFckpAYsXFpYCghCjUSiqClVhwUEQpAYsEbWAoCqooVEgpVYYKCIWAzYy3UAVKxREQoLVikXIFEqgHJh0oARUrFFCIYgqRFYAP0/jv7KM7Qa1RRaCRkFFDVZkasBUKKiCqJRQ6pEtQSPGCwUNazI0ASNgjNSg1VaUiqqIQZ1FgorTONAFqNgjNSVqhiSQVIPKCiqUVoENRwQBYqoYgUUoGwBVAYCSpwQMmqqKGiGIELTgorOtMaDemiKiFlrTIDMa0ZisASIjxBURUUGpSIqDUrFalMBiNixUAqaKC0TqqLAaMZjVBQclK0DGNixUBShaC0Gs2A0YzxagKDkpWtBhqG8UDNKWgJWa0LANOsRuAquQ06DONcTeKgCg4pQAtIwDqlZjcBVUadBlZfL0bxf8+9nwDIpQrV8fv7D/GkIo1z7/IQM/HuvFJRef2FKQU7/ALG+yQrc+PdngkI1+/VeHfkkDOqpAb7fI/SQo4q339Uga4jxSEaMCACpAfId+qQBcr3+SgXEcr6FA1TO/wC0gYt6pIFehvX7/CQrJtSATxPP3vqkI1+vdRIF49+dZnRID5j4SFHLr35QypAuPVcun4SEPHokgf/Z");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 10px;
+}
+.kek {
+    font-family: sans-serif;
+    position: absolute;
+    padding: 5px;
+    left: 25px;
+    top: 10px;
+}
+#authors {
+    position: absolute;
+    right: 10px;
+    font-style: italic;
+    font-family: monospace;
+}
+#bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: darkgrey;
+    height: 100px;
+}

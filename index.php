@@ -2,61 +2,71 @@
     <head>
         <title>UNITShop</title>
         <meta charset="UTF-8" />
-        <link href="css/main.css" rel="stylesheet" type="text/css" />
+        <link href="css/main1.css" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="https://unit.ua/img/vi.jpg"/>
-        <script>
-            function bucket() {
-                var shops = document.getElementById("num_shops");
-
+        <style>
+            .printed_div {
+                border: 2px solid green;
+                height: auto;
+                width: auto;
             }
-            function show_bucket() {
-                var num = document.getElementById("num_shops");
-                var str = document.getElementById("num_shops");
-                var int_num = parseInt(num) + 1;
-                str.innerHTML = String.fromCharCode(int_num);
+            #printed_div_img {
+                height: 200px;
+                width: 200px;
             }
-        </script>
+            .description {
+            }
+        </style>
     </head>
     <body>
 
         <div id="top">
-            <H1 id="kek">UnitShop</H1>
+            <a href="index.php"><H1 id="kek">Paradise</H1></a>
             <form id="search_form">
                 <input class="search" />
                 <input id="search_button" name="submit" type='submit' value="OK">
             </form>
-            <div onclick="show_bucket()" id="bucket">
-                <img id="bucket_img" src="sources/bucket.png">
-                <div id="num_">
-                    <p id="num_shops">0</p>
+            <div>
+                <div id="bucket">
+                    <a href="php/bucket.php"><img id="bucket_img" src="sources/bucket.png"></a>
                 </div>
             </div>
         </div>
 
         <div id="center">
-            <div class="center_item" id="kategory">
-                <p id="list_header">Выберите категорию товара</p>
-                <a href="product.php"> <p id="list_elem">lol</p></a>
-                <p id="list_elem">shmot</p>
-                <p id="list_elem">telefon</p>
-                <p id="list_elem">komp</p>
-                <p id="list_elem">dom</p>
-            </div>
+            <form method="post" action="./php/sort_category.php" class="center_item" id="kategory">
+                <div class="dropdown">
+                    <p id="list_header">Choose category</p>
+                    <div class="dropdown_menu">
+                        <?php
+                            $acc = unserialize(file_get_contents("./data/categories"));
+                            foreach ($acc as $key => $value)
+                            {
+                                echo "<input type='submit' name='$key' value='".$value["category"]."' id='list_elem'/>";
+                            }
+                            echo "<input type='submit' name='all' value='all' id='list_elem'/>";
+                        ?>
+                    </div>
+                </div>
+            </form>
             <div class="center_item" id="user">
-                <p id="authorise">Здравствуйте,
+                <p id="authorise">Hello,
                         <?php
                             session_start();
                             if (!$_SESSION["logged_on_user"])
-                                echo "<a href=\"login.html\"> to buy some войдите в личный кабинет</a>";
+                                echo "<a href=\"./html/login.html\"> want to login?</a>";
                             else
                                 echo $_SESSION["logged_on_user"];
                         ?>
-                    <!--<a href="login.html">войдите в личный кабинет</a>-->
                 </p>
 
                 <?php
                     if ($_SESSION["logged_on_user"])
-                        echo "<a href='./exit.php'><p id='exit'>exit</p></a>";
+                        echo "<a href='../php/exit.php'><p id='exit'>Exit</p></a>";
+                ?>
+                <?php 
+                    if ($_SESSION["logged_on_user"] == "admin")
+                        echo "<a href='./html/admin.php'>To duty</a>";
                 ?>
             </div>
             <div id="korzina">
@@ -66,6 +76,44 @@
 
         <div id="tovary">
             <!-- List of stuff here-->
+            <?php
+            session_start();
+            if ($_SESSION["category"] !== null && $_SESSION["category"] !== "all") {
+                $i = 0;
+                $uns = unserialize(file_get_contents("./data/products"));
+                $acc = array();
+                foreach ($uns as $el) {
+                    if ($el["category1"] === $_SESSION["category"] ||
+                        $el["category2"] === $_SESSION["category"] ||
+                        $el["category3"] === $_SESSION["category"]) {
+                        $acc[] = $el;
+                        $i++;
+                    }
+                }
+                if ($i === 0)
+                    echo "<h1>No such tovary for category: ".$_SESSION["category"]."</h1>";
+            }
+            else
+                $acc = unserialize(file_get_contents("./data/products"));
+            $i = 0;
+            echo "<table style='display: flex;justify-content: center;' >";
+            foreach ($acc as $key=>$value)
+            {
+                if ($i % 4 === 0)
+                    echo "<tr>";
+                echo "<td><form method='post' action='./php/add_to_bucket.php' class='printed_div'>
+                    <input type='hidden' name='name' value='".$acc[$key]["name"]."'/>
+                    <input type='hidden' name='price' value='".$acc[$key]["price"]."'/>
+                    Name: <span class='description'>".$acc[$key]["name"]."</span><br/>Price: <span class='description'>"
+                    .$acc[$key]["price"]."</span><br/>"
+                    ."<img id='printed_div_img' src='".$acc[$key]["img"]."'/><br/>
+                        <input type='submit' name='buy' value='buy'/></form></td>";
+                if ($i % 4 === 3)
+                    echo "</tr>";
+                $i++;
+            }
+            echo "</table>";
+            ?>
         </div>
 
 

@@ -47,14 +47,6 @@
     text-align: center;
     font-size: 1.6vw;
 }
-#list_elem {
-    border: 1px solid red;
-    cursor: pointer;
-    list-style-type: none;
-    margin: 1vw;
-    font-size: 1.6vw;
-    text-align: center;
-}
 #bottom {
     position: absolute;
     bottom: 0;
@@ -123,4 +115,15 @@
 .search::after {
     display: block;
     content: "?";
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown_menu {
+    display: none;
+    position: absolute;
+}
+.dropdown:hover .dropdown_menu {
+    display: block;
 }
